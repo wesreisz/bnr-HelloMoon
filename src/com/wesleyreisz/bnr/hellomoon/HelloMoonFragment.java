@@ -1,5 +1,7 @@
 package com.wesleyreisz.bnr.hellomoon;
 
+import com.wesleyreisz.bnr.hellomoon.AudioPlayer.PlayerState;
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -22,8 +24,16 @@ public class HelloMoonFragment extends Fragment {
 			
 			@Override
 			public void onClick(View v) {
-				mPlayer.play(getActivity());
-				
+				if (mPlayer.getPlayerState()==PlayerState.STOPPED){
+					mPlayer.play(getActivity());
+					mButtonPlay.setText("Pause");
+				}else if(mPlayer.getPlayerState()==PlayerState.RUNNING){
+					mPlayer.pause();
+					mButtonPlay.setText("Play");
+				}else{
+					mPlayer.pause();
+					mButtonPlay.setText("Pause");
+				}			
 			}
 		});
 		mButtonStop = (Button) v.findViewById(R.id.hellomoon_stopButton);
@@ -32,9 +42,11 @@ public class HelloMoonFragment extends Fragment {
 			@Override
 			public void onClick(View v) {
 				mPlayer.stop();
+				mButtonPlay.setText("Play");
 				
 			}
 		});
+		
 		
 		return v;
 	}
