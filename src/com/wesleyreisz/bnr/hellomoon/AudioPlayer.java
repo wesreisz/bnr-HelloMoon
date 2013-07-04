@@ -3,6 +3,7 @@ package com.wesleyreisz.bnr.hellomoon;
 import android.content.Context;
 import android.media.MediaPlayer;
 import android.util.Log;
+import android.view.SurfaceHolder;
 
 public class AudioPlayer {
 	public enum PlayerState{
@@ -35,12 +36,13 @@ public class AudioPlayer {
 			state = PlayerState.RUNNING;
 		}
 	}
-	public void play(Context c){
+	public void play(Context c,SurfaceHolder surfaceHolder){
 		Log.d(TAG,"Calling play");
 		stop();
 		state = PlayerState.RUNNING;
 		
-		mPlayer = MediaPlayer.create(c, R.raw.one_small_step);
+		mPlayer = MediaPlayer.create(c, R.raw.apollo_17_stroll);
+		mPlayer.setDisplay(surfaceHolder);
 		
 		mPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
 			

@@ -3,12 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <ImageView
-        android:id="@+id/imageViewNeil"
+    <SurfaceView
+        android:id="@+id/hellomoon_surfaceViewVideo"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/armstrong_on_moon" 
-        android:contentDescription="@string/hellomoon_description"
         android:scaleType="centerInside"
         android:layout_weight="1"
         />
