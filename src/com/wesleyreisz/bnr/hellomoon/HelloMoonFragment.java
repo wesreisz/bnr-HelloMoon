@@ -1,7 +1,6 @@
 package com.wesleyreisz.bnr.hellomoon;
 
-import com.wesleyreisz.bnr.hellomoon.AudioPlayer.PlayerState;
-
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,52 +9,24 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.VideoView;
 
 public class HelloMoonFragment extends Fragment {
 	private AudioPlayer mPlayer = new AudioPlayer();
 	private Button mButtonPlay;
 	private Button mButtonStop;
-	private SurfaceView surfaceView;
-	private SurfaceHolder surfaceHolder;
+	private static String imgPath =
+			"android.resource://com.wesleyreisz.bnr.hellomoon/raw/apollo_17_stroll";
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.fragment_hello_moon, container, false);
-		
-		surfaceView = (SurfaceView)v.findViewById(R.id.hellomoon_surfaceViewVideo);
-		surfaceHolder = surfaceView.getHolder();
-		
-		
-		mButtonPlay = (Button) v.findViewById(R.id.hellomoon_playButton);
-		mButtonPlay.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				if (mPlayer.getPlayerState()==PlayerState.STOPPED){
-					mPlayer.play(getActivity(), surfaceHolder);
-					mButtonPlay.setText("Pause");
-				}else if(mPlayer.getPlayerState()==PlayerState.RUNNING){
-					mPlayer.pause();
-					mButtonPlay.setText("Play");
-				}else{
-					mPlayer.pause();
-					mButtonPlay.setText("Pause");
-				}			
-			}
-		});
-		mButtonStop = (Button) v.findViewById(R.id.hellomoon_stopButton);
-		mButtonStop.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				mPlayer.stop();
-				mButtonPlay.setText("Play");
-				
-			}
-		});
-		
-		
+		VideoView vv = (VideoView)v.findViewById(R.id.hellomoon_viewVideo);
+		vv.setVideoURI(Uri.parse(imgPath));
+		vv.requestFocus();
+	    vv.start();
+	
 		return v;
 	}
 	

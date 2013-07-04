@@ -3,29 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <SurfaceView
-        android:id="@+id/hellomoon_surfaceViewVideo"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <VideoView
+        android:id="@+id/hellomoon_viewVideo"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:scaleType="centerInside"
         android:layout_weight="1"
         />
-    <TableRow 
-        android:gravity="center|bottom"
-        android:layout_weight="0"
-        android:paddingBottom="10pt">
-        <Button 
-            android:id="@+id/hellomoon_playButton"
-            android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-        	android:text="@string/hellomoon_play"
-            />
-        <Button 
-            android:id="@+id/hellomoon_stopButton"
-            android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-        	android:text="@string/hellomoon_stop"
-            />
-    </TableRow>
-
 </TableLayout>
